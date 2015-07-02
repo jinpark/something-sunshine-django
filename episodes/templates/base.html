@@ -1,0 +1,114 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel='shortcut icon' type='image/x-icon' href='{% static "episodes/images/favicon.png" %}' />
+  <link rel="canonical" href="http://www.somethingsunshine.com/">
+  <link rel="alternate" type="application/rss+xml" title="Something Sunshine" href="/feed.xml" />
+  {% block facebook_meta %}{% endblock facebook_meta %}
+  {% block twitter_meta %}{% endblock twitter_meta %}
+  <title>Something Sunshine</title>
+  <meta name="description" content="Co-hosts Bobby and Ahnmin discuss their favorite films, music, television shows, and videogames.
+">
+
+  <link rel="stylesheet" href="{% static "episodes/css/materialize.min.css" %}">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static "episodes/css/main.css" %}">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="{% static "episodes/js/elevator.min.js" %}"></script>
+  <script src="{% static "episodes/js/materialize.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "episodes/js/amplitude.js" %}"></script>
+
+
+
+</head>
+  <body>
+    <div class="page-content">
+      <div class="wrapper">
+
+        {% block content %}{% endblock content %}
+
+      </div>
+    </div>
+
+  <footer class="page-footer">
+    <div class="container">
+    <!-- Begin MailChimp Signup Form -->
+    <div class="card-panel">
+      <div id="mc_embed_signup">
+        <form action="//somethingsunshine.us11.list-manage.com/subscribe/post?u=3f9c8499345dab8dabb833e58&amp;id=25747ca0a9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+          <div id="mc_embed_signup_scroll" class="row valign-wrapper">
+            <div class="input-field col s12 m6 offset-l2 offset-m2 mc-field-group">
+              <input type="email" placeholder="Email Address" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+              <label for="EMAIL">Subscribe to hear about new episodes!</label>
+            </div>
+            <div id="mce-responses" class="clear">
+              <div class="response" id="mce-error-response" style="display:none"></div>
+              <div class="response" id="mce-success-response" style="display:none"></div>
+            </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+              <div style="position: absolute; left: -5000px;"><input type="text" name="b_3f9c8499345dab8dabb833e58_25747ca0a9" tabindex="-1" value=""></div>
+              <div class="clear col s12 m3 valign center-align">
+                <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn waves-effect waves-light">Submit</button>
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+    <!--End mc_embed_signup-->
+    
+<!--       <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Something Sunshine</h5>
+          <p class="grey-text text-lighten-4">A podcast for people about things from Ahnmin and Bobby</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">RSS</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">iTunes</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Contact</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div> -->
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col s4 hide-on-med-and-down">
+            © 2015 Something Sunshine
+          </div>
+          <div class="col s12 m12 l4">
+            <div class="icons center">
+              <a href="http://www.somethingsunshine.com/feed.xml/">
+                  <i class="fa fa-rss fa-inverse fa-2x"></i>
+              </a>
+              <a href="https://www.facebook.com/somethingsunshinepodcast" class="">
+                  <i class="fa fa-facebook fa-inverse fa-2x"></i>
+              </a>
+              <a href="https://twitter.com/someshinepod" class="">
+                  <i class="fa fa-twitter fa-inverse fa-2x"></i>
+              </a>
+              <a href="https://itunes.apple.com/us/podcast/something-sunshine/id998043135?mt=2" class="">
+                  <i class="fa fa-music fa-inverse fa-2x"></i>
+              </a>
+            </div>
+          </div>
+          <div class="col s4 hide-on-med-and-down">
+            <a class="grey-text text-lighten-4 right elevator-button" href="#!">Don't click here</a>
+            <a href="#" class="grey-text text-lighten-4 right cornify" onclick="cornify_add();return false;">Really don't click here</a>
+            <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </body>
+
+</html>

@@ -1,0 +1,123 @@
+{% extends "base.html" %}{% load static from staticfiles %}{% load episode_extras %}
+
+{% block facebook_meta %}
+	{% if episode %}
+	<meta property="og:image" content="{% static_url episode.thumbnail %}" />
+	<meta property="og:description" content="Something Sunshine - Episode {{ episode.number }}: {{ episode.description }} "/>		
+	<meta property="og:url" content="http://www.somethingsunshine.com/?episode={{ episode.number }}"/>
+	<meta property="og:title" content="Something Sunshine - Episode {{ episode.number }} - {{ episode.title }}"/>
+	{% endif %}
+	<meta property="og:site_name" content="Something Sunshine"/>
+{% endblock facebook_meta %}
+{% block twitter_meta %}
+	<meta name="twitter:card" content="player">
+	<meta name="twitter:site" content="@someshinepod">
+	{% if episode %}
+	<meta name="twitter:title" content="Something Sunshine - Episode {{ episode.number }} - {{ episode.title }}">
+	<meta name="twitter:description" content="{{ episode.description }}">
+	<meta name="twitter:image" content="{% static_url episode.thumbnail %}">
+	<meta name="twitter:player" content="https://www.somethingsunshine.com/embed/{{ episode.id }}">
+	<meta name="twitter:player:width" content="480">
+	<meta name="twitter:player:height" content="480">
+	<meta name="twitter:player:stream" content="{% static_url episode.audio_file_path %}">
+	<meta name="twitter:player:stream:content_type" content="audio/mp3">
+	{% endif %}
+{% endblock twitter_meta %}
+
+{% block content %}
+
+<div class="home">
+	<div class="player main-player valign-wrapper closed">
+		<div class="play-button valign">
+			<div class="amplitude-play-pause amplitude-paused" amplitude-main-play-pause="true"></div>
+		</div>
+		<div class="playing-info valign">
+			<span amplitude-song-info="name"></span>
+			- Episode <span amplitude-song-info="album"></span>
+			<div class="play-time">
+				<span class="amplitude-current-minutes" amplitude-single-current-minutes="true">0</span>:<span class="amplitude-current-seconds" amplitude-single-current-seconds="true">00</span> / 
+				<span class="amplitude-duration-minutes" amplitude-single-duration-minutes="true">0</span>:<span class="amplitude-duration-minutes" amplitude-single-duration-seconds="true">00</span>
+			</div>
+		</div>
+		<input type="range" class="amplitude-song-slider seekbar" amplitude-singular-song-slider="true" value="0"/>
+	</div>
+	<div class="fullpage valign-wrapper">
+		<h1 class="valign center container"><a class="listen" href="#episodes">LISTEN</a></h1>
+	</div>
+	<div class="episodes-wrapper center valign-wrapper" id="episodes">
+		<div class="container valign">
+			<div class="row">
+			{% for episode in episodes reversed %}
+			  <div class="col s12 m6 l4 episode-card">
+			    <div class="card" id="episode-{{episode.number}}">
+			      <div class="card-image">
+			      	<span class="badge episode-badge">Episode {{ episode.number }}</span>
+			        <div class="thumbnail-container">
+			        	<img class="episode-thumbnail" src="{% static_url episode.thumbnail %}">
+			        </div>
+			        <span class="card-title">{{ episode.title }}</span>
+			      </div>
+			      <div class="card-content">
+			        <p>{{ episode.description|safe }}</p>
+			      </div>
+			      <div class="card-action">
+			        <div class="small-player">
+				        <a><div class="amplitude-play-pause amplitude-paused" amplitude-song-index="{{forloop.revcounter0}}"></div></a>
+			        </div>
+		        	<div class="download">
+		        		<a href="{% static_url episode.audio_file_path %}"><i class="fa fa-2x fa-arrow-circle-o-down"></i></a>
+			        </div>
+			        <div class="more">
+			        	<a href="#modal-episode-{{ episode.number }}" class="modal-trigger"><i class="mdi-navigation-more-horiz small"></i></a>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			  {% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+{% for episode in episodes %}
+<div class="modal modal-episode-{{ episode.number }}" id="modal-episode-{{ episode.number }}">
+	<div class="modal-content">
+		<h4 class="center">{{ episode.title }}</h4>
+		<p class="description center">{{ episode.description }}</p>
+		<img src="{% static_url episode.thumbnail %}" alt="" class="thumbnail center">
+		<h5 class="center">Show Notes</h5>
+		<p>{{ episode.show_notes }}</p>
+	</div>
+</div>
+{% endfor %}
+<script src="{% static "episodes/js/range_updater.js" %}"></script>
+<script>
+$(document).ready(function () {
+	var elevator = new Elevator({
+	  element: document.querySelector('.elevator-button'),
+	  mainAudio: '{% static "episodes/audio/elevator-music.mp3" %}',
+	  endAudio: '{% static "episodes/audio/ding.mp3" %}',
+	  duration: 4700
+	});
+
+	$('.amplitude-play-pause').on('click', function(e) {
+		$('.main-player').removeClass('closed');
+	});
+
+	Amplitude.init({
+	    "songs": [
+	    	{% for episode in episodes %}
+	    		{
+	    		    "name": "{{ episode.title }}",
+	    		    "album": "{{ episode.number }}",
+	    		    "url": "{% static_url episode.audio_file_path %}",
+	    		},
+	    	{% endfor %}
+	    ],
+	    "volume": 1,
+	    "debug": true
+	});
+	$('.modal-trigger').leanModal();
+})
+
+</script>
+{% endblock content %}

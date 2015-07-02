@@ -1,0 +1,12 @@
+dj-database-url==0.3.0
+dj-static==0.0.6
+Django==1.8.2
+django-s3direct==0.3.11
+django-smuggler==0.6.0
+django-toolbelt==0.0.1
+gunicorn==19.3.0
+honcho==0.6.6
+psycopg2==2.6
+requests==2.6.0
+static3==0.5.1
+virtualenv==12.1.1

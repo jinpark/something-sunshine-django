@@ -1,0 +1,408 @@
+/* reset css */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	/*font-size: 100%;*/
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+/**
+ * Basic styling
+ */
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 300;
+  color: #111;
+  background-color: #fdfdfd;
+  -webkit-text-size-adjust: 100%; }
+
+.center {
+  text-align: center;
+  margin: auto; }
+
+.cf:before,
+.cf:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */ }
+
+.cf:after {
+  clear: both; }
+
+.fullpage {
+  background-color: black;
+  height: 100vh;
+  width: 100%;
+}
+
+a.listen {
+  color: #FFFFFF;
+  font-size: 20vw;
+}
+
+.episodes-wrapper {
+	text-align: center;
+	margin: auto;
+	background: linear-gradient(#4BBFC3,#7BAABE);
+  min-height: 100vh;
+}
+
+.episodes-wrapper .row {
+  margin-bottom: 0px;
+}
+
+.episodes-wrapper .container {
+}
+
+footer.page-footer {
+  margin-top: 0px;
+  background-color: #7BAABE;
+}
+
+footer.page-footer .footer-copyright {
+  background-color: #7BAABE;
+}
+
+audio {
+  width: 100%;
+}
+
+.card p {
+  text-align: left;
+}
+
+span.card-title {
+  text-align: left;
+}
+
+@media only screen and (min-width: 601px) and (max-width : 650px) {
+  .row .col.l4 {
+    width: 100%;
+    margin-left: 0; }
+}
+
+@media only screen and (max-width:1200px) and (min-width:993px) {
+  .row .col.l4 {
+    width: 50%;
+    margin-left: 0; }
+}
+
+@media only screen and (max-width: 600px) {
+    .main-player.valign-wrapper {
+      display: block;
+      max-height: 100px;
+    }
+    .main-player input[type=range] {
+      margin-right: 10px;
+    }
+    .main-player .amplitude-play-pause {
+      margin-top: 15px;
+    }
+    #mc_embed_signup_scroll {
+      display: block;
+    }
+}
+
+.home div.small-player {
+  width: 33.333%;
+  float: left;
+  text-align: center;
+  padding: 10px 0;
+  border-right: 1px solid #D3D3D3;
+}
+
+.home div.download {
+  width: 33.333%;
+  float: left;
+  text-align: center;
+  padding: 10px 0;
+  border-right: 1px solid #D3D3D3;
+}
+
+.home div.more {
+  width: 33.333%;
+  float: left;
+  text-align: center;
+}
+
+.home div.more a {
+  margin-right: 0;
+}
+
+.home div.small-player a, .home div.download a {
+  margin-right: 0px !important;
+}
+
+.home .card .card-action {
+  padding: 0px;
+}
+
+.home .card .card-content {
+  height: 100px;
+  overflow: auto;
+}
+
+/*html5 player*/
+
+.main-player input[type=range] {
+    /*removes default webkit styles*/
+    -webkit-appearance: none;
+    
+    /*fix for FF unable to apply focus style bug */
+    border: 1px solid white;
+    
+    /*required for proper track sizing in FF*/
+    width: 100%;
+    margin-right: 50px;
+}
+.main-player input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 25px;
+    background: #ddd;
+    border: none;
+}
+.main-player input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 25px;
+    width: 0px;
+    background: goldenrod;
+}
+.main-player input[type=range]:focus {
+    outline: none;
+}
+
+.main-player input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 15px;
+    background: #ddd;
+    border: none;
+}
+.main-player input[type=range]::-moz-range-thumb {
+    border: none;
+    height: 25px;
+    width: 0px;
+    background: goldenrod;
+}
+
+/*hide the outline behind the border*/
+.main-player input[type=range]:-moz-focusring{
+    outline: 1px solid white;
+    outline-offset: -1px;
+}
+
+.main-player input[type=range]::-ms-track {
+    width: 100%;
+    height: 25px;
+    
+    /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+    background: transparent;
+    
+    /*leave room for the larger thumb to overflow with a transparent border */
+    border-color: transparent;
+    border-width: 6px 0;
+
+    /*remove default tick marks*/
+    color: transparent;
+}
+.main-player input[type=range]::-ms-fill-lower {
+    background: #777;
+    border-radius: 10px;
+}
+.main-player input[type=range]::-ms-fill-upper {
+    background: #ddd;
+    border-radius: 10px;
+}
+.main-player input[type=range]::-ms-thumb {
+    border: none;
+    height: 25px;
+    width: 0px;
+    background: goldenrod;
+}
+.main-player input[type=range]:focus::-ms-fill-lower {
+    background: #888;
+}
+.main-player input[type=range]:focus::-ms-fill-upper {
+    background: #ccc;
+}
+
+.main-player {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 100;
+
+  overflow-y: hidden;
+  max-height: 60px; /* approximate max height */
+  transition-property: all;
+  transition-duration: .5s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.main-player.closed {
+  max-height: 0;
+}
+
+.main-player .play-button {
+  width: 15%;
+  float: left;
+  text-align: center;
+}
+
+.main-player .playing-info {
+  width: 85%;
+  float: left;
+}
+
+.main-player .play-time {
+  float: right;
+  margin-right: 10px;
+}
+
+.main-player input[type=range]+.thumb .value{
+  width: 0;
+}
+
+.amplitude-paused:after {
+  content: "\f04b"; 
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  font-size: 20px;
+  color: #ffab40;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.amplitude-playing:after {
+  content: "\f04c"; 
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  font-size: 20px;
+  color: #ffab40;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.cornify {
+  margin-right: 10px;
+}
+
+
+/* label focus color */
+#mc_embed_signup_scroll .input-field input[type=email]:focus + label {
+ color: #FFAB40;
+}
+/* label underline focus color */
+#mc_embed_signup_scroll .input-field input[type=email]:focus {
+ border-bottom: 1px solid #FFAB40;
+ box-shadow: 0 1px 0 0 #FFAB40;
+}
+
+#mc_embed_signup .btn {
+  background-color: #FFAB40;
+}
+
+#mc_embed_signup_scroll.row {
+  margin-bottom: 0;
+}
+
+span.episode-badge {
+  z-index: 10;
+  padding-top: 10px;
+  color: white;
+}
+
+.thumbnail-container:after { 
+  content:'';
+  position:absolute;
+  left:0; top:0;
+  width:100%; 
+  height:98%; /*super ghetto*/
+  display:inline-block;
+  background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0), rgba(0,0,0,0.4)); /* For Chrome 25 and Safari 6, iOS 6.1, Android 4.3 */
+  background-image:    -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0), rgba(0,0,0,0.4)); /* For Firefox (3.6 to 15) */
+  background-image:      -o-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0), rgba(0,0,0,0.4)); /* For old Opera (11.1 to 12.0) */ 
+  background-image:         linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0), rgba(0,0,0,0.4)); /* Standard syntax; must be last */
+}
+
+footer .icons a {
+  padding-right: 10px;
+}
+
+footer .icons i:hover {
+  color: rgba(0,0,0,0.2);
+}
+
+.modal .modal-content h4 {
+  font-size: 24px;
+}
+
+.modal-content .thumbnail {
+  width: 70%;
+  display: block;
+}
+
+.modal .modal-content h5 {
+  font-size: 20px;
+}
+
+/*.newhome a.listen {
+  color: #FFF;
+  text-shadow: 0 0 150px #FFF, 0 0 60px #FFF, 0 0 10px #FFF;
+}*/
